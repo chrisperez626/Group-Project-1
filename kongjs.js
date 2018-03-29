@@ -1,29 +1,21 @@
+// var eventLocation = $("").val().trim(); // NEEDS HTML
 
+function searchEvent() {
+    $.ajax({
+        url: "http://api.eventful.com/rest/events/search?app_key=q6HzzBnhK5VTx7kQ&location=" + eventLocation + "&within=10",
+        method: "GET"
+    
+    }).then(function(response){
+        console.log(response)
 
-function ajax() {
-$.ajax({
-    url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=new+york&image_type=photo",
-    method: "GET"
-
-}).then(function(response){
-    console.log(response)
-    var newDiv = $("<img>")
-    newDiv.attr("src", response.hits[0].userImageURL)
-    $(".images").append(newDiv);
-})
+        // var newDiv = $("<div>");
+        // newDiv.text(response);
+        // $(".images").append(newDiv);
+    })
 }
 
-// function ajax() {
-//     $.ajax({
-//         url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=new+york&image_type=photo",
-//         method: "GET"
-    
-//     }).then(function(response){
-//         console.log(response)
-//         var newDiv = $("<img>")
-//         newDiv.attr("src", response.hits[0].userImageURL)
-//         $(".images").append(newDiv);
-//     })
-//     }
+searchEvent();
 
-ajax()
+// $("#").on("click", function() { // NEEDS HTML
+
+// })
