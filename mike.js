@@ -1,29 +1,32 @@
+var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
 
-function ajax() {
+    var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
+      "q=boston,Burundi&units=imperial&appid=" + APIKey;
+
+    
     $.ajax({
-        url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=new+york&image_type=photo",
-        method: "GET"
-    
-    }).then(function(response){
-        console.log(response)
-        var newDiv = $("<img>")
-        newDiv.attr("src", response.hits[0].userImageURL)
-        $(".images").append(newDiv);
+      url: queryURL,
+      method: "GET"
     })
-    }
-    
-    // function ajax() {
-    //     $.ajax({
-    //         url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=new+york&image_type=photo",
-    //         method: "GET"
+      
+      .then(function(response) {
+
+       
+        console.log(queryURL);
+
+       
+        console.log(response);
+
         
-    //     }).then(function(response){
-    //         console.log(response)
-    //         var newDiv = $("<img>")
-    //         newDiv.attr("src", response.hits[0].userImageURL)
-    //         $(".images").append(newDiv);
-    //     })
-    //     }
-    
-    ajax()
+        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
+        $(".wind").text("Wind Speed: " + response.wind.speed);
+        $(".humidity").text("Humidity: " + response.main.humidity);
+        $(".temp").text("Temperature (F) " + response.main.temp);
+
+        
+        console.log("Wind Speed: " + response.wind.speed);
+        console.log("Humidity: " + response.main.humidity);
+        console.log("Temperature (F): " + response.main.temp);
+        console.log("type" + response.weather.main);
+      });
