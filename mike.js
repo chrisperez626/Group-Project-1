@@ -1,8 +1,8 @@
 var APIKey = "166a433c57516f51dfab1f7edaed8413";
 
-
+    var city = "new york"
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
-      "q=boston,Burundi&units=imperial&appid=" + APIKey;
+      "q="+city +"&units=imperial&appid=" + APIKey;
 
     
     $.ajax({
@@ -19,14 +19,15 @@ var APIKey = "166a433c57516f51dfab1f7edaed8413";
         console.log(response);
 
         
-        $(".city").html("<h1>" + response.name + " Weather Details</h1>");
-        $(".wind").text("Wind Speed: " + response.wind.speed);
-        $(".humidity").text("Humidity: " + response.main.humidity);
-        $(".temp").text("Temperature (F) " + response.main.temp);
+        
+        $("#weather-wind").html("Wind Speed: " + response.wind.speed);
+        $("#weather-humidity").html("Humidity: " + response.main.humidity);
+        $("#weather-temp").html("Temperature (F) " + response.main.temp);
+        $("#weather-description").html("Description: " + response.weather[0].description);
 
         
         console.log("Wind Speed: " + response.wind.speed);
         console.log("Humidity: " + response.main.humidity);
         console.log("Temperature (F): " + response.main.temp);
-        console.log("type" + response.weather.main);
+        console.log("type" + response.weather[0].description);
       });
