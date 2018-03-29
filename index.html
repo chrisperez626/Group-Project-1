@@ -24,6 +24,12 @@
             }).then(function(response) {
                 console.log(response);
             });
+            $.ajax({
+                url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=" + weatherCity + "&image_type=photo",
+                method: "GET"
+            }).then(function(response){
+                console.log(response)
+            });
         });
     </script>
 </body>
