@@ -1,77 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-
-    
-    <!-- <link rel="stylesheet" type="text/css" href="style.css"> -->
-    <script
-    src="http://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
-    <link rel="stylesheet" href="assets/style.css">
-    <script
-    src="https://code.jquery.com/jquery-3.3.1.min.js"
-    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <title>Test</title>
 </head>
 <body>
-
-    <div class = "container">
-
-        <div class = "row">
-            <h1>City At A Glance</h1>
-        </div>
-        
-
-        <div class = "row">
-            <form id = "inputform">
-                <label for = "cityinput" class = "inputlabel">Search City</label>
-                <input type = "text" id = "cityinput">
-                <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
-            </form>
-        </div>
-        
+    <div class="container">
         <div class="row">
-
-        </div>
-
-        <div class="row">
-            <div class="col s8" id="images"></div>
-
-
-            <div class="col s4" id="weather">
-                <h3>Weather</h3>
-                <div id="weather-display"></div>
+            <div class="col-xs-12">
+                <h1><span id="cityDisplay">City</span> at a Glance</h1>
             </div>
         </div>
-        <div class="row">
-            <div class="col s6" id="map">
-                <h3>Map</h3>
-                <div id="map-display"></div>
-            </div>
-
-            <div class="col s6" id="restaurants">
-                <h3>Events</h3>
-                <form id = "inputform">
-                    <label for = "date" class = "inputlabel">Date</label>
-                    <input type = "date" id="date">
-                    <button class="btn waves-effect waves-light" type="submit" name="action">Submit</button>
+        <div class="row searchRow">
+            <div class="col-xs-12">
+                <form id="citySearch">
+                    <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
                 </form>
-                <div id="event-display"></div>
             </div>
         </div>
-        
-
-        
-
+        <div class="row">
+            <div class="col-xs-8">
+                <img src="http://cdn-image.travelandleisure.com/sites/default/files/styles/1600x1000/public/1444253482/DG2015-new-york.jpg" alt="nyc">
+            </div>
+            <div class="col-xs-4">
+                <h2>Weather</h2>
+                <div id="iconContainer">
+                    <img id="icon" src="">
+                </div>
+                <ul>
+                    <li>Conditions: <span id="condDisplay"></span></li>
+                    <li>Temperature: <span id="tempDisplay"></span></li>
+<!--                    <li>Temperature: <span id="tempDisplay"></span></li>-->
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xs-6">
+                <h2>Traffic</h2>
+                <div id="map"></div>
+            </div>
+            <div class="col-xs-6">
+                <h2>Events</h2>
+            </div>
+        </div>
     </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places&callback=initAutocomplete" async defer></script>
+<script src="assets/js/googleMaps.js"></script>
+<script>
+    $("#citySearch").submit(function() {
+        event.preventDefault();
+        var city = $("#pac-input").val().trim();
+        $.ajax({
+            url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
+            method: "GET"
+        }).then(function(response) {
+            console.log(response);
+            $("#cityDisplay").text(titleCase(city));
+            $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+            $("#tempDisplay").text(response.main.temp);
+            $("#condDisplay").text(response.weather[0].main);
+        });
+    });
     
-
-    <script type="text/javascript" src="assets/kongjs.js"></script>
+    function titleCase(str) {
+      return str.toLowerCase().split(' ').map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
+    }
+</script>
 </body>
 </html>
