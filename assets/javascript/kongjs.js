@@ -10,28 +10,67 @@ $(document.body).on("click", "#eventbtn", function(event){
         method: "GET"
     }).then(function(response){
         console.log(response)
+
+        function displayEvent() {
+
+            var eventDiv = $("<div>");
+        
+            var imageDiv = $("<img>");
+            imageDiv.attr("src", response.results[i].photo_url);
+            imageDiv.attr("alt", "Image not uploaded by this group");
+        
+            var titleDiv = $("<div>");
+            titleDiv.text("Title: " + response.results[i].group.name);
+        
+            var address = response.results[i].venue.name + " " + response.results[i].venue.address_1 + " " + response.results[i].venue.city + " " + response.results[i].venue.state + " " + response.results[i].venue.zip
+            var addressDiv = $("<div>");
+            addressDiv.text("Address: " + address);
+        
+            var urlLink = $("<a>");
+            urlLink.attr("href", response.results[i].event_url);
+            urlLink.text("Learn more about this event");
+        
+            $(eventDiv).append(imageDiv, titleDiv, addressDiv, urlLink);
+            $("#event-display").prepend(eventDiv);
+        
+        }
         
         i = 0;
 
         while (i < 5) {
 
-        var eventDiv = $("<div>");
+        if (response.results[i].venue === undefined || response.results[i].venue.name === undefined || response.results[i].venue.address_1 === undefined || response.results[i].venue.city === undefined || response.results[i].venue.state === undefined) {
+    
+            var eventDiv = $("<div>");
 
-        var imageDiv = $("<img>");
-        imageDiv.attr("src", response.results[i].photo_url);
-        imageDiv.attr("alt", "Image not uploaded by this group");
+            var imageDiv = $("<img>");
+            imageDiv.attr("src", response.results[i].photo_url);
+            imageDiv.attr("alt", "Image not uploaded by this group");
 
-        var titleDiv = $("<div>");
-        titleDiv.text("Title: " + response.results[i].group.name);
+            var titleDiv = $("<div>");
+            titleDiv.text("Title: " + response.results[i].group.name);
 
-        if (response.results[i].venue === undefined) {
-        
+            var addressDiv = $("<div>");
+            addressDiv.text("Address: Click on link below for address");
+
             var urlLink = $("<a>");
             urlLink.attr("href", response.results[i].event_url);
             urlLink.text("Learn more about this event");
-    
+
             $(eventDiv).append(imageDiv, titleDiv, addressDiv, urlLink);
-            $("#event-display").append(eventDiv);
+            $("#event-display").prepend(eventDiv);
+
+            i++;
+
+            return;
+            
+            }
+
+        else if (response.results[i].venue.zip === undefined) {
+
+            response.results[i].venue.zip = "";
+
+            displayEvent();
             
             i++;
 
@@ -39,22 +78,7 @@ $(document.body).on("click", "#eventbtn", function(event){
 
         }
 
-        if (response.results[i].venue.zip === undefined) {
-
-            response.results[i].venue.zip = "";
-
-        }
-
-        var address = response.results[i].venue.name + " " + response.results[i].venue.address_1 + " " + response.results[i].venue.city + " " + response.results[i].venue.state + " " + response.results[i].venue.zip
-        var addressDiv = $("<div>");
-        addressDiv.text("Address: " + address);
-
-        var urlLink = $("<a>");
-        urlLink.attr("href", response.results[i].event_url);
-        urlLink.text("Learn more about this event");
-
-        $(eventDiv).append(imageDiv, titleDiv, addressDiv, urlLink);
-        $("#event-display").append(eventDiv);
+        displayEvent();
         
         i++;
 
