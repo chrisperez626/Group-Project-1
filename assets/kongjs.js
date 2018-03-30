@@ -2,7 +2,7 @@
 
 function ajax() {
 $.ajax({
-    url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=new+orleans&image_type=photo",
+    url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=sanfrancisco&image_type=photo",
     method: "GET"
 
 }).then(function(response){
