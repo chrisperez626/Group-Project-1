@@ -36,7 +36,15 @@
 
             <div class="col-xs-4" id="weather">
                 <h3>Weather</h3>
-                <div id="weather-display"></div>
+                <div id="iconContainer">
+                    <img id="icon" src="">
+                </div>
+                <ul>
+                    <li>Conditions: <span id="condDisplay"></span></li>
+                    <li>Temperature: <span id="tempDisplay"></span></li>
+                    <li>Wind: <span id ="windDisplay"></span></li>
+<!--                    <li>Temperature: <span id="tempDisplay"></span></li>-->
+                </ul>
             </div>
         </div>
         <div class="row">
@@ -52,8 +60,11 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places&callback=initAutocomplete" async defer></script>
 <script src="assets/js/googleMaps.js"></script>
-<script type="text/javascript" src="assets/js/logic.js"></script>
+
 <script>
+    function titleCase(str) {
+      return str.toLowerCase().split(' ').map(x=>x[0].toUpperCase()+x.slice(1)).join(' ');
+    }
     $("#citySearch").submit(function() {
         event.preventDefault();
         var city = $("#pac-input").val().trim();
@@ -64,11 +75,11 @@
             console.log(response);
             $("#cityDisplay").text(titleCase(city));
             $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-            $("#tempDisplay").text(response.main.temp);
-            $("#condDisplay").text(response.weather[0].main);
+            $("#tempDisplay").html(response.main.temp);
+            $("#condDisplay").html(response.weather[0].main);
         });
     });
 </script>
-    
+<script type="text/javascript" src="assets/js/logic.js"></script>
 </body>
 </html>
