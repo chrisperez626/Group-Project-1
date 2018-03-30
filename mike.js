@@ -1,11 +1,12 @@
-var APIKey = "166a433c57516f51dfab1f7edaed8413";
-
-    var city = "new york"
+  var APIKey = "166a433c57516f51dfab1f7edaed8413";
+  var city = "hillsborough"
+  // var city = $("#cityinput").val();
     var queryURL = "https://api.openweathermap.org/data/2.5/weather?" +
       "q="+city +"&units=imperial&appid=" + APIKey;
 
     
     $.ajax({
+      
       url: queryURL,
       method: "GET"
     })
@@ -30,4 +31,13 @@ var APIKey = "166a433c57516f51dfab1f7edaed8413";
         console.log("Humidity: " + response.main.humidity);
         console.log("Temperature (F): " + response.main.temp);
         console.log("type" + response.weather[0].description);
+
+       
       });
+
+    //   $("#search-city").on("click", function(event){
+    //     event.preventDefault();
+    //     ajax();
+    // });
+
+   
