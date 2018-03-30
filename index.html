@@ -35,6 +35,7 @@
                 <ul>
                     <li>Conditions: <span id="condDisplay"></span></li>
                     <li>Temperature: <span id="tempDisplay"></span></li>
+                    <li>Wind: <span id = "windDisplay"></span></li>
 <!--                    <li>Temperature: <span id="tempDisplay"></span></li>-->
                 </ul>
             </div>
@@ -63,8 +64,9 @@
             console.log(response);
             $("#cityDisplay").text(titleCase(city));
             $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-            $("#tempDisplay").text(response.main.temp);
+            $("#tempDisplay").text(response.main.temp + "°F" );
             $("#condDisplay").text(response.weather[0].main);
+            $("#windDisplay").text(response.wind.speed +  "mph");
         });
     });
     
