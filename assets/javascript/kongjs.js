@@ -9,7 +9,6 @@ $(document.body).on("click", "#eventbtn", function(event){
         // url: "https://api.meetup.com/2/open_events.json?city=miami&country=us&key=c5ae5417717fa335b7d8c774c32",
         method: "GET"
     }).then(function(response){
-        console.log(response)
 
         function displayEvent() {
 
@@ -85,4 +84,5 @@ $(document.body).on("click", "#eventbtn", function(event){
         };
         
     });
+
 });
