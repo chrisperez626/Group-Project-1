@@ -1,14 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<<<<<<< HEAD
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+=======
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
     <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <title>Test</title>
 </head>
+<<<<<<< HEAD
 <body>
     <div class="container">
         <div class="row">
@@ -20,13 +30,30 @@
         </div>
         <div class="row searchRow">
             <div class="col s12">
+=======
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12">
+                <h1>
+                    <span id="cityDisplay">City</span> at a Glance</h1>
+            </div>
+        </div>
+        <div class="row searchRow">
+            <div class="col-xs-12">
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
                 <form id="citySearch">
                     <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
                 </form>
             </div>
         </div>
         <div class="row">
+<<<<<<< HEAD
             <div class="col s12 m8" id="images">
+=======
+            <div class="col-xs-8" id="images">
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
                 <div class="row">
                     <div id="big-picture-display"></div>
                 </div>
@@ -36,30 +63,98 @@
             </div>
 
 
+<<<<<<< HEAD
             <div class="col s12 m4" id="weather">
+=======
+            <div class="col-xs-4" id="weather">
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
                 <h3>Weather</h3>
                 <div id="iconContainer">
                     <img id="icon" src="">
                 </div>
                 <ul>
+<<<<<<< HEAD
                     <li>Conditions: <span id="condDisplay"></span></li>
                     <li>Temperature: <span id="tempDisplay"></span></li>
                     <li>Wind: <span id ="windDisplay"></span></li>
+=======
+                    <li>Conditions:
+                        <span id="condDisplay"></span>
+                    </li>
+                    <li>Temperature:
+                        <span id="tempDisplay"></span>
+                    </li>
+                    <li>Wind:
+                        <span id="windDisplay"></span>
+                    </li>
+                    <li>Sunset:
+                        <span id="sunsetDisplay"></span>
+                    </li>
+                    <!--                    <li>Temperature: <span id="tempDisplay"></span></li>-->
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
                 </ul>
             </div>
         </div>
         <div class="row">
+<<<<<<< HEAD
             <div class="col s12 m6">
                 <h2>Traffic</h2>
                 <div id="map"></div>
             </div>
             <div class="col s12 m6">
+=======
+            <div class="col-xs-6">
+                <h2>Traffic</h2>
+                <div id="map"></div>
+            </div>
+            <div class="col-xs-6">
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
                 <h2>Events</h2>
             </div>
         </div>
     </div>
+<<<<<<< HEAD
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places" async defer></script>
 <script src="assets/js/script.js"></script>
 </body>
 </html>
+=======
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places&callback=initAutocomplete"
+        async defer></script>
+    <script src="assets/js/googleMaps.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
+
+    <script>
+        function titleCase(str) {
+            return str.toLowerCase().split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ');
+        }
+        $("#citySearch").submit(function () {
+            event.preventDefault();
+            weather();
+        })
+
+        function weather() {
+            var city = $("#pac-input").val().trim();
+            $.ajax({
+                url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                $("#cityDisplay").text(titleCase(city));
+                $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+                $("#tempDisplay").html(response.main.temp + "°F");
+                $("#condDisplay").html(response.weather[0].main);
+                $("#windDisplay").html(response.wind.speed + " mph");
+                var unixSunset = response.sys.sunset
+                var newSunset= (moment(unixSunset * 1000).format("ddd, MMMM Do, h:mm:ss a"));
+                $("#sunsetDisplay").html(newSunset);
+            });
+        };
+    </script>
+    <script type="text/javascript" src="assets/js/logic.js"></script>
+</body>
+
+</html>
+>>>>>>> cdbac6b795d5380d7d965c5459b322d576bff955
