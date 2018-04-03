@@ -23,7 +23,7 @@ $("#citySearch").submit(function() {
     });
 });
 
-$("button").on("click", function() {
+$(document.body).on("click", ".historybtn", function() {
     var city = $(this).text();
     var latitude, longitude;
     $.ajax({
