@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>Test</title>
 </head>
 
@@ -20,13 +19,6 @@
                     <span id="cityDisplay">City</span> at a Glance</h1>
             </div>
         </div>
-
-        <div class="row">
-            <div class="col=xs-12">
-                <div class="history"></div>
-            </div>
-        </div>
-
         <div class="row searchRow">
             <div class="col-xs-12">
                 <form id="citySearch">
@@ -73,13 +65,7 @@
                 <div id="map"></div>
             </div>
             <div class="col-xs-6">
-                <h2>Events in US cities</h2>
-                <form id="inputform">
-                    <label for="zipinput" class="inputlabel">Search by zipcode</label>
-                    <input type="text" id="zipinput">
-                    <button class="btn waves-effect waves-light" type="submit" name="action" id="eventbtn">Search</button>
-                </form>
-                <div id="event-display"></div>
+                <h2>Events</h2>
             </div>
         </div>
     </div>
@@ -90,17 +76,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.21.0/moment.min.js"></script>
 
     <script>
-
         function titleCase(str) {
             return str.toLowerCase().split(' ').map(x => x[0].toUpperCase() + x.slice(1)).join(' ');
         }
         $("#citySearch").submit(function () {
             event.preventDefault();
-
-            weather();
-        });
-
-        function weather() {
             var city = $("#pac-input").val().trim();
             $.ajax({
                 url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
@@ -110,15 +90,15 @@
                 $("#cityDisplay").text(titleCase(city));
                 $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
                 $("#tempDisplay").html(response.main.temp + "°F");
-                $("#windDisplay").html(response.weather[0].main);
+                $("#condDisplay").html(response.weather[0].main);
+                $("#windDisplay").html(response.wind.speed + " mph");
                 var unixSunset = response.sys.sunset
                 var newSunset= (moment(unixSunset * 1000).format("ddd, MMMM Do, h:mm:ss a"));
                 $("#sunsetDisplay").html(newSunset);
             });
-        }
+        });
     </script>
     <script type="text/javascript" src="assets/js/logic.js"></script>
-    <script type="text/javascript" src="assets/javascript/kongjs.js"></script>
 </body>
 
 </html>
