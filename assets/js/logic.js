@@ -48,6 +48,44 @@ $("#citySearch").submit(function(){
     $("#side-pictures").empty();
     $("#big-picture-display").empty();
     ajax();
+
+    historyButton();
+
+});
+
+function historyButton() {
+
+    var historyBtn = $("<button>"); 
+
+    historyBtn.text($("#pac-input").val());
+
+    historyBtn.attr("class", "historybtn");
+
+    historyBtn.attr("data", $("#pac-input").val());
+
+    if ($("#pac-input").val() === "") {
+
+        return;
+
+    }
+
+    $(".history").append(historyBtn);
+
+    $("#pac-input").val("");
+
+};
+
+$(document.body).on("click", ".historybtn", function(event) {
+
+    event.preventDefault();
+
+    $("#pac-input").val($(this).attr("data"));
+
+    ajax();
+
+    initAutocomplete();
+
+    weather();
 });
 
 // sets so when specific picture is clicked on 
