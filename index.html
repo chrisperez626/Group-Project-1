@@ -1,26 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
     <link rel="stylesheet" type="text/css" href="assets/css/main.css">
     <title>Test</title>
 </head>
-
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-xs-12">
-                <h1>
-                    <span id="cityDisplay">City</span> at a Glance</h1>
+            <div class="col s12">
+                <h1><span id="cityDisplay">City</span> at a Glance</h1>
+                <button class="controls" class="testButton">Denver</button>
+                <button class="controls" class="testButton">Los Angeles</button>
             </div>
         </div>
         <div class="row searchRow">
-            <div class="col-xs-12">
+            <div class="col s12">
                 <form id="citySearch">
                     <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
                 </form>
@@ -28,7 +27,7 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-8" id="images">
+            <div class="col s12 m8" id="images">
                 <div class="row">
                     <div id="big-picture-display"></div>
                 </div>
@@ -38,7 +37,7 @@
             </div>
 
 
-            <div class="col-xs-4" id="weather">
+            <div class="col s12 m4" id="weather">
                 <h3>Weather</h3>
                 <div id="iconContainer">
                     <img id="icon" src="">
@@ -61,11 +60,11 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xs-6">
+            <div class="col s12 m6">
                 <h2>Traffic</h2>
                 <div id="map"></div>
             </div>
-            <div class="col-xs-6">
+            <div class="col s12 m6">
                 <h2>Events</h2>
                 <form id = "inputform">
                     <label for = "zipinput" class = "inputlabel">Search by zipcode</label>
@@ -109,8 +108,12 @@
             });
         };
     </script>
+<<<<<<< HEAD
     <script type="text/javascript" src="assets/js/logic.js"></script>
     <script type="text/javascript" src="assets/javascript/kongjs.js"></script>
+=======
+    <script type="text/javascript" src="assets/js/pictures.js"></script>
+>>>>>>> 73497dc7141e89fe597c2474ffa0bc30e45923f6
 </body>
 
 </html>

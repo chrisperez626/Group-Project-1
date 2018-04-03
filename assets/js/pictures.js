@@ -53,6 +53,7 @@ $("#citySearch").submit(function(){
 
 });
 
+//creates button
 function historyButton() {
 
     var historyBtn = $("<button>"); 
@@ -75,6 +76,7 @@ function historyButton() {
 
 };
 
+//displays buttons on page
 $(document.body).on("click", ".historybtn", function(event) {
 
     event.preventDefault();
