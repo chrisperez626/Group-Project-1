@@ -1,36 +1,65 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-        <meta charset="utf-8">
-        <title>Places Searchbox</title>
-        <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
-    </head>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <title>Test</title>
+</head>
 <body>
-    <form id="citySearch">
-        <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
-    </form>
-    <div id="map"></div>
-    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places&callback=initAutocomplete" async defer></script>
-    <script src="assets/js/googleMaps.js"></script>
-    <script>
-        $("#citySearch").submit(function() {
-            event.preventDefault();
-            var weatherCity = $("#pac-input").val().trim();
-            $.ajax({
-                url: "https://api.openweathermap.org/data/2.5/weather?q=" + weatherCity + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
-                method: "GET"
-            }).then(function(response) {
-                console.log(response);
-            });
-            $.ajax({
-                url: "https://pixabay.com/api/?key=8524906-87de4c65edf77625335e21bd8&q=" + weatherCity + "&image_type=photo",
-                method: "GET"
-            }).then(function(response){
-                console.log(response)
-            });
-        });
-    </script>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1><span id="cityDisplay">City</span> at a Glance</h1>
+                <button class="controls" class="testButton">Denver</button>
+                <button class="controls" class="testButton">Los Angeles</button>
+            </div>
+        </div>
+        <div class="row searchRow">
+            <div class="col s12">
+                <form id="citySearch">
+                    <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m8" id="images">
+                <div class="row">
+                    <div id="big-picture-display"></div>
+                </div>
+                <div class="row">
+                    <div id="side-pictures"></div>
+                </div>
+            </div>
+
+
+            <div class="col s12 m4" id="weather">
+                <h3>Weather</h3>
+                <div id="iconContainer">
+                    <img id="icon" src="">
+                </div>
+                <ul>
+                    <li>Conditions: <span id="condDisplay"></span></li>
+                    <li>Temperature: <span id="tempDisplay"></span></li>
+                    <li>Wind: <span id ="windDisplay"></span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col s12 m6">
+                <h2>Traffic</h2>
+                <div id="map"></div>
+            </div>
+            <div class="col s12 m6">
+                <h2>Events</h2>
+            </div>
+        </div>
+    </div>
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places" async defer></script>
+<script src="assets/js/script.js"></script>
 </body>
 </html>
