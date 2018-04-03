@@ -5,17 +5,7 @@ function titleCase(str) {
 $("#citySearch").submit(function() {
     event.preventDefault();
     var city = $("#pac-input").val().trim();
-    $.ajax({
-        url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
-        method: "GET"
-    }).then(function(response) {
-        console.log(response);
-        $("#cityDisplay").text(titleCase(city));
-        $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-        $("#tempDisplay").html(response.main.temp);
-        $("#condDisplay").html(response.weather[0].main);
-        $("#windDisplay").html(response.wind.speed);
-    });
+    
     $.ajax({
         url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + city + "&key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE",
         method: "GET"
