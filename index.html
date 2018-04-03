@@ -109,8 +109,11 @@
                 console.log(response);
                 $("#cityDisplay").text(titleCase(city));
                 $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
-                $("#tempDisplay").html(response.main.temp);
-                $("#condDisplay").html(response.weather[0].main);
+                $("#tempDisplay").html(response.main.temp + "°F");
+                $("#windDisplay").html(response.weather[0].main);
+                var unixSunset = response.sys.sunset
+                var newSunset= (moment(unixSunset * 1000).format("ddd, MMMM Do, h:mm:ss a"));
+                $("#sunsetDisplay").html(newSunset);
             });
         }
     </script>
