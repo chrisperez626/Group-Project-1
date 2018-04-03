@@ -24,6 +24,7 @@
                 <form id="citySearch">
                     <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
                 </form>
+                <div class = "history"></div>
             </div>
         </div>
         <div class="row">
@@ -66,6 +67,12 @@
             </div>
             <div class="col-xs-6">
                 <h2>Events</h2>
+                <form id = "inputform">
+                    <label for = "zipinput" class = "inputlabel">Search by zipcode</label>
+                    <input type = "text" id = "zipinput">
+                    <input id = "eventbtn" type = "submit" value = "search">
+                </form>
+                <div id = "event-display"></div>
             </div>
         </div>
     </div>
@@ -103,6 +110,7 @@
         };
     </script>
     <script type="text/javascript" src="assets/js/logic.js"></script>
+    <script type="text/javascript" src="assets/javascript/kongjs.js"></script>
 </body>
 
 </html>
