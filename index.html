@@ -81,6 +81,10 @@
         }
         $("#citySearch").submit(function () {
             event.preventDefault();
+            weather();
+        })
+
+        function weather() {
             var city = $("#pac-input").val().trim();
             $.ajax({
                 url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
@@ -96,7 +100,7 @@
                 var newSunset= (moment(unixSunset * 1000).format("ddd, MMMM Do, h:mm:ss a"));
                 $("#sunsetDisplay").html(newSunset);
             });
-        });
+        };
     </script>
     <script type="text/javascript" src="assets/js/logic.js"></script>
 </body>
