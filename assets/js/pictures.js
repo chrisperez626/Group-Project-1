@@ -88,9 +88,21 @@ $(document.body).on("click", ".historybtn", function(event) {
 
     ajax();
 
-    initAutocomplete();
-
-    weather();
+    var city = $("#pac-input").val().trim();
+            $.ajax({
+                url: "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&units=imperial&appid=166a433c57516f51dfab1f7edaed8413",
+                method: "GET"
+            }).then(function (response) {
+                console.log(response);
+                $("#cityDisplay").text(titleCase(city));
+                $("#icon").attr("src", "http://openweathermap.org/img/w/" + response.weather[0].icon + ".png");
+                $("#tempDisplay").html(response.main.temp + "°F");
+                $("#condDisplay").html(response.weather[0].main);
+                $("#windDisplay").html(response.wind.speed + " mph");
+                var unixSunset = response.sys.sunset
+                var newSunset= (moment(unixSunset * 1000).format("ddd, MMMM Do, h:mm:ss a"));
+                $("#sunsetDisplay").html(newSunset);
+            });
 });
 
 // sets so when specific picture is clicked on 
