@@ -50,7 +50,8 @@ $("#citySearch").submit(function(){
     ajax();
 });
 
-// sets so 
+// sets so when specific picture is clicked on 
+//it then takes the place of the main picture
 $("body").on("click", ".side-pictures", function(){
     
     $("#big-picture").attr("src", $(this).attr("normalSize"));
