@@ -81,6 +81,9 @@ $(document.body).on("click", ".historybtn", function(event) {
 
     $("#pac-input").val($(this).attr("data"));
 
+    $("#side-pictures").empty();
+    $("#big-picture-display").empty();
+
     ajax();
 
     initAutocomplete();
