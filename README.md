@@ -18,4 +18,6 @@ This section displays a fully interactive Google Maps window that centers on the
 
 ## Events
 
-###### Chrome Extension Needed [Download Here](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)
+###### !!!Chrome Extension Needed [Download Here](https://chrome.google.com/webstore/detail/allow-control-allow-origi/nlfbmbojpeacfghkpbjhddihlkkiljbi?hl=en)!!!
+
+Find out about upcoming events in the city you're interested in!  This section shows users event information such as event names, locations, and dates.
