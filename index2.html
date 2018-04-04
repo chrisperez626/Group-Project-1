@@ -6,22 +6,28 @@
     <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
     <link rel="stylesheet" type="text/css" href="assets/css/googleMaps.css">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <title>City At A Glance</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Questrial" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/js/materialize.min.js"></script>
 </head>
 <body>
     <div class="container">
         <div class="row">
             <div class="col s12">
-                <h1><span id="cityDisplay">City</span> at a Glance</h1>
+                <h1 id="cityDisplay2"><span id="cityDisplay">City</span> at a Glance</h1>
+                <form id="citySearch">
+                    <input id="pac-input" class="controls" type="text" placeholder="City Name">
+                </form>
             </div>
         </div>
         <div class="row searchRow">
             <div class="col s12">
-                <form id="citySearch">
-                    <input id="pac-input" class="controls" type="text" placeholder="Enter Your City">
-                </form>
-                <div class = "history"></div>
+                <br>
+                <div class = "history">Searched: </div>
             </div>
         </div>
         <div class="row">
@@ -59,9 +65,10 @@
         </div>
         <div class="row">
             <div class="col s12 m6">
-                <h2>Traffic</h2>
+                <h2 class = "traffic">Traffic</h2>
                 <div id="map"></div>
             </div>
+        
             <div class="col s12 m6">
                 <h2>Events</h2>
                 <form id = "inputform">
@@ -73,6 +80,16 @@
             </div>
         </div>
     </div>
+
+    <footer class="page-footer teal">
+            <div class="footer-copyright">
+              <div class="container">
+              Created By: Seungha K, Rob D, Mike H, and Chris P
+              </div>
+            </div>
+          </footer>
+
+
     <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIufmm5UiONljRO32RW3ox_K01E0zgKPE&libraries=places"
         async defer></script>

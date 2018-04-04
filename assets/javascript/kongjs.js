@@ -12,7 +12,7 @@ $(document.body).on("click", "#eventbtn", function(event){
 
         function displayEvent() {
 
-            var eventDiv = $("<div>");
+            var eventDiv = $("<div><br>");
         
             var imageDiv = $("<img>");
             imageDiv.attr("src", response.results[i].photo_url);
@@ -36,11 +36,11 @@ $(document.body).on("click", "#eventbtn", function(event){
         
         i = 0;
 
-        while (i < 5) {
+        while (i < 20) {
 
         if (response.results[i].venue === undefined || response.results[i].venue.name === undefined || response.results[i].venue.address_1 === undefined || response.results[i].venue.city === undefined || response.results[i].venue.state === undefined) {
     
-            var eventDiv = $("<div>");
+            var eventDiv = $("<div><br>");
 
             var imageDiv = $("<img>");
             imageDiv.attr("src", response.results[i].photo_url);

@@ -47,6 +47,7 @@ $("#citySearch").submit(function(){
     event.preventDefault();
     $("#side-pictures").empty();
     $("#big-picture-display").empty();
+    
     ajax();
 
     historyButton();
@@ -70,7 +71,7 @@ function historyButton() {
 
     }
 
-    $(".history").append(historyBtn);
+    $(".history").append(historyBtn, " ");
 
     $("#pac-input").val("");
 
