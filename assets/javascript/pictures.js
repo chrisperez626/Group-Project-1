@@ -64,7 +64,7 @@ function historyButton() {
     historyBtn.attr("class", "historybtn");
 
     historyBtn.attr("data", $("#pac-input").val());
-
+    
     if ($("#pac-input").val() === "") {
 
         return;
